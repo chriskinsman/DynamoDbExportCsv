@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+'use strict';
+
+var dynamoDbExport = require('../lib/DynamoDBExportCSV.js');
+
+var commander = require('commander');
+
+commander.version('0.0.1')
+    .option('-i, --awsid <awsid>', 'AWS Secret ID')
+    .option('-s, --awssecret <awssecret>', 'AWS Secret Access Key')
+    .option('-r, --awsregion <awsregion>', 'AWS Region')
+    .option('-t, --table <tableName>', 'Table to export')
+    .option('-c, --columns <columns>', 'CSV list of columns')
+    .option('-g, --gzip', 'Gzip output')
+    .option('-p, --parallel <parallel>', 'Parallel scans to run - Defaults to 1', parseInt)
+    .parse(process.argv);
+
+if (! commander.table)
+{
+    console.error("You must specify a table");
+    commander.outputHelp();
+    process.exit(1);
+}
+
+if(! commander.awsid)
+{
+    console.error("You must specify an aws secret id");
+    commander.outputHelp();
+    process.exit(1);
+}
+
+if(! commander.awssecret)
+{
+    console.error("You must specify an aws secret access key");
+    commander.outputHelp();
+    process.exit(1);
+}
+
+if(! commander.awsregion)
+{
+    console.error("You must specify an aws region");
+    commander.outputHelp();
+    process.exit(1);
+}
+
+
+if (! commander.columns)
+{
+    console.error("You must specify a list of columns");
+    commander.outputHelp();
+    process.exit(1);
+}
+
+var parallelScans = 1;
+if (commander.parallel)
+{
+    parallelScans = commander.parallel;
+}
+
+var columns = commander.columns.split(',');
+
+console.info("Export DynamoDb table: " + commander.table + ", parallel scans: " + parallelScans);
+
+var exporter = new dynamoDbExport(commander.awsid, commander.awssecret, commander.awsregion);
+
+exporter.on("info", function(message) {
+    console.info(message);
+});
+
+exporter.on("throughputexceeded", function() {
+    console.warn("Throughput exceeded");
+});
+
+exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, function(err) {
+    console.info("Done exporting table");
+});

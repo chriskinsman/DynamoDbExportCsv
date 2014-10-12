@@ -1,0 +1,22 @@
+{
+  "name": "DynamoDBExportCSV",
+  "version": "0.0.1",
+  "description": "Export DynamoDb tables to CSV",
+  "bin": {
+      "DynamoDBExportCSV": "./bin/DynamoDBExportCSV"
+   },
+  "main": "./lib/DynamoDBExportCSV.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Kinsman - PushSpring",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "fast-csv": "~0.5.2",
+    "commander": "~2.3.0",
+    "async": "~0.9.0",
+    "aws-sdk": "~2.0.19",
+    "underscore": "~1.7.0",
+    "forever": "~0.11.1"
+  }
+}
