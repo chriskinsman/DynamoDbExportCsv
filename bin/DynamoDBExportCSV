@@ -12,7 +12,8 @@ commander.version('0.0.1')
     .option('-t, --table <tableName>', 'Table to export')
     .option('-c, --columns <columns>', 'CSV list of columns')
     .option('-g, --gzip', 'Gzip output')
-    .option('-p, --parallel <parallel>', 'Parallel scans to run - Defaults to 1', parseInt)
+    .option('-f, --filesize [filesize]', 'Size of each file in Mb.  If ommitted 250Mb', parseInt)
+    .option('-p, --parallel [parallel]', 'Parallel scans to run - Defaults to 1', parseInt)
     .parse(process.argv);
 
 if (! commander.table)
@@ -71,6 +72,6 @@ exporter.on("throughputexceeded", function() {
     console.warn("Throughput exceeded");
 });
 
-exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, function(err) {
+exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, function(err) {
     console.info("Done exporting table");
 });
