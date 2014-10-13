@@ -2,7 +2,6 @@
 'use strict';
 
 var dynamoDbExport = require('../lib/DynamoDbExportCsv.js');
-
 var commander = require('commander');
 
 commander.version('0.0.1')
