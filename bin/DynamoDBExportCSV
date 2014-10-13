@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var dynamoDbExport = require('../lib/DynamoDBExportCSV.js');
+var dynamoDbExport = require('../lib/DynamoDbExportCsv.js');
 
 var commander = require('commander');
 
