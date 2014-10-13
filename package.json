@@ -12,7 +12,7 @@
   "author": "Chris Kinsman - PushSpring",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "fast-csv": "~0.4.4",
+    "fast-csv": "0.4.4",
     "commander": "~2.3.0",
     "async": "~0.9.0",
     "aws-sdk": "~2.0.19",
