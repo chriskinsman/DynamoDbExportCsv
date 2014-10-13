@@ -1,9 +1,13 @@
 {
-  "name": "DynamoDBExportCSV",
+  "name": "DynamoDbExportCsv",
   "version": "0.0.1",
   "description": "Export DynamoDb tables to CSV",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PushSpring/DynamoDbExportCsv.git"
+  },
   "bin": {
-    "DynamoDBExportCSV": "./bin/DynamoDBExportCSV"
+    "DynamoDbExportCsv": "./bin/DynamoDbExportCsv"
   },
   "main": "./lib/DynamoDBExportCSV.js",
   "scripts": {
