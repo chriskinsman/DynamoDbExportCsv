@@ -10,9 +10,11 @@ commander.version('0.0.1')
     .option('-r, --awsregion <awsregion>', 'AWS Region')
     .option('-t, --table <tableName>', 'Table to export')
     .option('-c, --columns <columns>', 'CSV list of columns')
+    .option('-b, --bucket [s3bucket]', 'Optional S3 Bucket to upload to')
+    .option('-p, --path [s3path]', 'Optional s3 path')
     .option('-g, --gzip', 'Gzip output')
     .option('-f, --filesize [filesize]', 'Size of each file in Mb.  If ommitted 250Mb', parseInt)
-    .option('-p, --parallel [parallel]', 'Parallel scans to run - Defaults to 1', parseInt)
+    .option('-s, --scans [parallelscans]', 'Parallel scans to run - Defaults to 1', parseInt)
     .parse(process.argv);
 
 if (! commander.table)
@@ -52,9 +54,9 @@ if (! commander.columns)
 }
 
 var parallelScans = 1;
-if (commander.parallel)
+if (commander.scans)
 {
-    parallelScans = commander.parallel;
+    parallelScans = commander.scans;
 }
 
 var columns = commander.columns.split(',');
@@ -71,6 +73,6 @@ exporter.on("throughputexceeded", function() {
     console.warn("Throughput exceeded");
 });
 
-exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, function(err) {
+exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, commander.bucket, commander.path, function(err) {
     console.info("Done exporting table");
 });
