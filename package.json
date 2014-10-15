@@ -9,7 +9,7 @@
   "bin": {
     "DynamoDbExportCsv": "./bin/DynamoDbExportCsv"
   },
-  "main": "./lib/DynamoDBExportCSV.js",
+  "main": "./lib/DynamoDbExportCsv.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
