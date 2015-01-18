@@ -1,5 +1,8 @@
 # DynamoDbExportCsv
 
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+
 A simple library / CLI tool for exporting a dynamodb table to a CSV file.  CSV file can be written to local file system
 or streamed to S3.
 
