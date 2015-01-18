@@ -87,7 +87,7 @@ The author is [Chris Kinsman](https://github.com/chriskinsman) from [PushSpring]
 
   [MIT](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/DynamoDBExportToCSV.svg?style=flat
-[npm-url]: https://npmjs.org/package/DynamoDBExportToCSV
-[downloads-image]: https://img.shields.io/npm/dm/DynamoDBExportToCSV.svg?style=flat
-[downloads-url]: https://npmjs.org/package/DynamoDBExportToCSV
+[npm-image]: https://img.shields.io/npm/v/dynamodbexporttocsv.svg?style=flat
+[npm-url]: https://npmjs.org/package/dynamodbexporttocsv
+[downloads-image]: https://img.shields.io/npm/dm/dynamodbexporttocsv.svg?style=flat
+[downloads-url]: https://npmjs.org/package/dynamodbexporttocsv
