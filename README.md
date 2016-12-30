@@ -9,7 +9,7 @@ or streamed to S3.
 ## Features
   * Write to local file system
   * Stream to S3
-  * DynamoDb arallel scans to utilize provisioned throughput
+  * DynamoDb parallel scans to utilize provisioned throughput
 
 ## Installation
 

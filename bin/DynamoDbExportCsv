@@ -5,8 +5,8 @@ var dynamoDbExport = require('../lib/DynamoDbExportCsv.js');
 var commander = require('commander');
 
 commander.version('0.0.1')
-    .option('-i, --awsid <awsid>', 'AWS Secret ID')
-    .option('-s, --awssecret <awssecret>', 'AWS Secret Access Key')
+    .option('-i, --awsid [awsid]', 'AWS Secret ID')
+    .option('-s, --awssecret [awssecret]', 'AWS Secret Access Key')
     .option('-r, --awsregion <awsregion>', 'AWS Region')
     .option('-t, --table <tableName>', 'Table to export')
     .option('-c, --columns <columns>', 'CSV list of columns')
@@ -20,20 +20,6 @@ commander.version('0.0.1')
 if (! commander.table)
 {
     console.error("You must specify a table");
-    commander.outputHelp();
-    process.exit(1);
-}
-
-if(! commander.awsid)
-{
-    console.error("You must specify an aws secret id");
-    commander.outputHelp();
-    process.exit(1);
-}
-
-if(! commander.awssecret)
-{
-    console.error("You must specify an aws secret access key");
     commander.outputHelp();
     process.exit(1);
 }
