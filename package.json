@@ -4,7 +4,7 @@
   "description": "Export DynamoDb tables to CSV",
   "repository": {
     "type": "git",
-    "url": "git@github.com:PushSpring/DynamoDbExportCsv.git"
+    "url": "git@github.com:chriskinsman/DynamoDbExportCsv.git"
   },
   "bin": {
     "DynamoDbExportCsv": "./bin/DynamoDbExportCsv"
@@ -13,10 +13,10 @@
   "author": "Chris Kinsman - PushSpring",
   "license": "MIT",
   "dependencies": {
-    "fast-csv": "0.6.0",
-    "commander": "~2.8.1",
-    "async": "~1.4.2",
-    "aws-sdk": "~2.2.4",
+    "fast-csv": "2.3.0",
+    "commander": "~2.9.0",
+    "async": "~2.1.4",
+    "aws-sdk": "~2.7.20",
     "underscore": "~1.8.3",
     "s3-stream-upload": "~2.0.0"
   }
