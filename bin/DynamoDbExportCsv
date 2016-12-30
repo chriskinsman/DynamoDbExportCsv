@@ -15,6 +15,8 @@ commander.version('0.0.1')
     .option('-g, --gzip', 'Gzip output')
     .option('-f, --filesize [filesize]', 'Size of each file in Mb.  If ommitted 250Mb', parseInt)
     .option('-s, --scans [parallelscans]', 'Parallel scans to run - Defaults to 1', parseInt)
+    .option('-w, --worker [scanindex]', 'Which portion of a parallel scan this worker will do - If specified will only scan this portion of table', parseInt)
+    .option('-q, --quiet', 'Turn off progress information')
     .parse(process.argv);
 
 if (! commander.table)
@@ -47,18 +49,49 @@ if (commander.scans)
 
 var columns = commander.columns.split(',');
 
-console.info("Export DynamoDb table: " + commander.table + ", parallel scans: " + parallelScans);
+if(commander.worker!==undefined) {
+    console.info("Export DynamoDb table: " + commander.table + ", scan index: " + commander.worker);
+}
+else {
+    console.info("Export DynamoDb table: " + commander.table + ", parallel scans: " + parallelScans);
+}
 
 var exporter = new dynamoDbExport(commander.awsid, commander.awssecret, commander.awsregion);
 
+if(!commander.quiet) {
 exporter.on("info", function(message) {
     console.info(message);
+});
+
+exporter.on("error", function(message) {
+    console.error(message);
 });
 
 exporter.on("throughputexceeded", function() {
     console.warn("Throughput exceeded");
 });
+}
 
-exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, commander.bucket, commander.path, function(err) {
-    console.info("Done exporting table");
-});
+var finished = function(err) {
+    var workerPrefix = "";
+    if(commander.worker!==undefined) {
+        workerPrefix = "Worker [" + commander.worker + "]: ";
+    }
+
+    if(err) {
+        console.error(workerPrefix + "Finished with errors: ", err);
+        process.exit(1);
+    }
+    else {
+        console.info(workerPrefix + "Done exporting table");
+        process.exit(0);
+    }
+
+}
+
+if(commander.worker!==undefined) {
+    exporter.exportTableWorker(commander.table, columns, parallelScans, commander.worker, commander.gzip, commander.filesize, commander.bucket, commander.path, finished);
+}
+else {
+    exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, commander.bucket, commander.path, finished);
+}

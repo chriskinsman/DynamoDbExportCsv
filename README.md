@@ -91,3 +91,9 @@ The author is [Chris Kinsman](https://github.com/chriskinsman) from [PushSpring]
 [npm-url]: https://npmjs.org/package/dynamodbexportcsv
 [downloads-image]: https://img.shields.io/npm/dm/dynamodbexportcsv.svg?style=flat
 [downloads-url]: https://npmjs.org/package/dynamodbexportcsv
+
+1 = 3:11
+2 = 1:35
+3 = 1:10
+4 = 1:01
+10= 0:51
