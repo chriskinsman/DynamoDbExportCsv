@@ -93,5 +93,5 @@ if(commander.worker!==undefined) {
     exporter.exportTableWorker(commander.table, columns, parallelScans, commander.worker, commander.gzip, commander.filesize, commander.bucket, commander.path, finished);
 }
 else {
-    exporter.exportTable(commander.table, columns, parallelScans, commander.gzip, commander.filesize, commander.bucket, commander.path, finished);
+    exporter.exportTable(commander.table, columns.join(','), parallelScans, commander.gzip, commander.filesize, commander.bucket, commander.path, finished);
 }
