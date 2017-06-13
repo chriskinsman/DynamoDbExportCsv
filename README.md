@@ -16,12 +16,12 @@ or streamed to S3.
 
 ### CLI tool
 ``` bash
-  $ [sudo] npm install DynamoDBExportCSV -g
+  $ [sudo] npm install dynamodbexportcsv -g
 ```
 
 ### Library
 ``` bash
-  $ npm install DynamoDBExportCSV --save
+  $ npm install dynamodbexportcsv --save
 ```
 
 ## Usage
