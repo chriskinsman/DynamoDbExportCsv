@@ -121,6 +121,7 @@ The table contained 187,363,510 rows and was 98GB in size.  All tests wrote the 
 | c4.8xlarge | 30 | 36 m | 67% | 5500 |
 
 ## Release Notes
+* 0.2.7 - Fixed issues with column.split and improved stream drain behavior
 * 0.2.4 - Added support for boolean column types
 
 ## People
