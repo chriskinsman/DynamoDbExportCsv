@@ -1,6 +1,6 @@
 {
   "name": "dynamodbexportcsv",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "Export DynamoDb tables to CSV",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "fast-csv": "2.3.0",
     "commander": "~2.9.0",
     "async": "~2.1.4",
-    "aws-sdk": "~2.7.20",
+    "aws-sdk": "~2.344.0",
     "underscore": "~1.8.3",
     "s3-stream-upload": "~2.0.0"
   }
